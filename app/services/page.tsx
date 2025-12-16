@@ -21,6 +21,7 @@ export default function Services() {
       desc: 'Traditional dhol players and live percussionists to add cultural flair and energy to celebrations.',
     },
     {
+
       icon: Sparkles,
       title: 'Smoke, Sparkular & Special Effects (SFX)',
       desc: 'Fog machines, sparkular effects, confetti cannons, and other visual effects to wow your guests.',
@@ -36,17 +37,29 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white py-16 px-4">
-      <div className="container mx-auto">
-        <motion.h1
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <section className="relative h-96 flex items-center justify-center overflow-hidden bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&h=1080&fit=crop')" }}>
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-4xl font-bold text-center text-neon-purple mb-12"
+          className="relative z-10 text-center px-4"
         >
-          Our Services
-        </motion.h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h1 className="text-4xl md:text-6xl font-bold text-neon-yellow mb-4 drop-shadow-lg">
+            Our Services
+          </h1>
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-200 drop-shadow">
+            Discover our comprehensive range of professional DJ services and entertainment solutions.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Services Content */}
+      <div className="py-16 px-4">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -60,6 +73,7 @@ export default function Services() {
               <p className="text-gray-300">{service.desc}</p>
             </motion.div>
           ))}
+        </div>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="https://wa.me/1234567890"
+              href="https://wa.me/919039816856?text=Hi,%20I%20want%20to%20know%20more%20about%20the%20services%3F"
               className="bg-neon-pink text-white px-8 py-3 rounded-full font-semibold hover:bg-neon-blue transition-colors shadow-lg"
             >
               Book Now on WhatsApp
