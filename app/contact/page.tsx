@@ -108,7 +108,7 @@ export default function Contact() {
         >
           <p className="text-gray-300 mb-4">Or contact us directly on WhatsApp:</p>
           <a
-            href="https://wa.me/919039816856?text=Hi,%20I%20want%20to%20know%20more%20about%20the%20services%3F"
+            href="https://wa.me/919888967397?text=Hi,%20I%20want%20to%20know%20more%20about%20the%20services%3F"
             className="inline-block bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition-colors"
           >
             WhatsApp Business
