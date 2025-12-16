@@ -1,24 +1,30 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1920&h=1080&fit=crop')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=1920&h=1080&fit=crop')" }}>
-        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+      <section className="relative h-screen overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1920&h=1080&fit=crop"
+          alt="Hero background"
+          fill
+          className="object-cover opacity-50"
+        />
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative z-10 text-center px-4"
+          className="flex flex-col justify-center items-center h-full px-4 relative z-10 text-center"
         >
           <h1 className="text-4xl md:text-6xl font-bold text-neon-yellow mb-4 drop-shadow-lg">
             Make Your Event Unforgettable with DJ Aman
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-200 drop-shadow">
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-200 drop-shadow opacity-90">
             Professional DJ setups, stunning lighting, and special effects for weddings, parties, and corporate events.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
