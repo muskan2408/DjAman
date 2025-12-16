@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DJ Aman Website
+
+A modern, responsive static website for DJ Aman Dhuri, providing professional DJ setups and event entertainment services.
+
+## Features
+
+- **Home Page**: Hero section with services overview and call-to-action buttons
+- **Services Page**: Detailed service offerings with icons and descriptions
+- **Gallery Page**: Photo and video gallery with hover animations
+- **Contact Page**: Contact form and WhatsApp integration
+- **Dark Theme**: Premium dark design with vibrant neon accents
+- **Animations**: Smooth animations using Framer Motion
+- **Responsive**: Mobile-friendly design
+
+## Technologies Used
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React Icons
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/`: Next.js app directory
+  - `page.tsx`: Home page
+  - `services/`: Services page
+  - `gallery/`: Gallery page
+  - `contact/`: Contact page
+  - `components/`: Reusable components (Header, Footer)
+  - `layout.tsx`: Root layout
+  - `globals.css`: Global styles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Vercel (Recommended)
 
-## Deploy on Vercel
+1. Push your code to a GitHub repository.
+2. Connect your repository to Vercel.
+3. Vercel will automatically detect Next.js and deploy it.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Manual Build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+```
+
+This is a Next.js app that can be deployed to Vercel, Netlify, or any hosting service that supports Node.js.
