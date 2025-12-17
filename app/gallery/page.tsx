@@ -5,19 +5,22 @@ import Image from 'next/image';
 
 export default function Gallery() {
   const images = [
-    { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop', alt: 'DJ Setup' },
-    { src: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=300&fit=crop', alt: 'Lighting Effects' },
-    { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop', alt: 'Wedding Event' },
-    { src: 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=400&h=300&fit=crop', alt: 'Party Celebration' },
-    { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop', alt: 'DJ at Work' },
-    { src: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=300&fit=crop', alt: 'Stage Lighting' },
-    { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop', alt: 'Wedding Dance' },
-    { src: 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=400&h=300&fit=crop', alt: 'Birthday Party' },
+    { src: '/gallery/gallery1.jpeg', alt: 'DJ Aman event 1' },
+    { src: '/gallery/gallery2.jpeg', alt: 'DJ Aman event 2' },
+    { src: '/gallery/gallery3.jpeg', alt: 'DJ Aman event 3' },
+    { src: '/gallery/gallery4.jpeg', alt: 'DJ Aman event 4' },
+    { src: '/gallery/gallery5.jpeg', alt: 'DJ Aman event 5' },
   ];
 
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
       <div className="container mx-auto">
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <span className="inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white/5">
+            <Image src="/logo.jpeg" alt="DJ Aman logo" width={48} height={48} className="object-contain" />
+          </span>
+          <span className="text-lg font-semibold text-neon-purple">DJ Aman</span>
+        </div>
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}

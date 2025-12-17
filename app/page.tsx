@@ -6,11 +6,11 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1920&h=1080&fit=crop')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="min-h-screen bg-black text-white" style={{ backgroundImage: "url('/gallery/gallery3.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {/* Hero Section */}
       <section className="relative h-screen overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1920&h=1080&fit=crop"
+          src="/gallery/gallery3.jpeg"
           alt="Hero background"
           fill
           className="object-cover opacity-50"

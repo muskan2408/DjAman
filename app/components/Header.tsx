@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -9,7 +10,10 @@ export default function Header() {
   return (
     <header className="bg-black text-white shadow-lg">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-neon-purple">
+        <Link href="/" className="flex items-center gap-3 text-2xl font-bold text-neon-purple">
+          <span className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white/5">
+            <Image src="/logo.jpeg" alt="DJ Aman logo" width={40} height={40} className="object-contain" />
+          </span>
           DJ Aman
         </Link>
         <nav className="hidden md:flex space-x-6">
