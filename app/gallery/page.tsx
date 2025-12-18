@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 export default function Gallery() {
   const images = [
@@ -11,6 +13,28 @@ export default function Gallery() {
     { src: '/gallery/gallery4.jpeg', alt: 'DJ Aman event 4' },
     { src: '/gallery/gallery5.jpeg', alt: 'DJ Aman event 5' },
   ];
+
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const openLightbox = (index: number) => {
+    setSelectedImage(index);
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
+
+  const goToPrevious = () => {
+    if (selectedImage !== null) {
+      setSelectedImage(selectedImage === 0 ? images.length - 1 : selectedImage - 1);
+    }
+  };
+
+  const goToNext = () => {
+    if (selectedImage !== null) {
+      setSelectedImage(selectedImage === images.length - 1 ? 0 : selectedImage + 1);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black text-white py-16 px-4">
@@ -37,7 +61,8 @@ export default function Gallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="overflow-hidden rounded-lg"
+              className="overflow-hidden rounded-lg cursor-pointer"
+              onClick={() => openLightbox(index)}
             >
               <Image
                 src={image.src}
@@ -49,6 +74,45 @@ export default function Gallery() {
             </motion.div>
           ))}
         </div>
+
+        {/* Lightbox Modal */}
+        {selectedImage !== null && (
+          <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 text-white hover:text-neon-pink transition-colors z-10"
+              aria-label="Close"
+            >
+              <X size={32} />
+            </button>
+
+            <button
+              onClick={goToPrevious}
+              className="absolute left-4 text-white hover:text-neon-pink transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={48} />
+            </button>
+
+            <button
+              onClick={goToNext}
+              className="absolute right-4 text-white hover:text-neon-pink transition-colors z-10"
+              aria-label="Next image"
+            >
+              <ChevronRight size={48} />
+            </button>
+
+            <div className="relative max-w-6xl max-h-[90vh] w-full h-full flex items-center justify-center">
+              <Image
+                src={images[selectedImage].src}
+                alt={images[selectedImage].alt}
+                width={1200}
+                height={900}
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

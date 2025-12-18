@@ -3,8 +3,63 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+
+const serviceImages = {
+  'DJ Setups': [
+    'https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?w=800',
+    'https://images.pexels.com/photos/2114365/pexels-photo-2114365.jpeg?w=800',
+    'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?w=800',
+    'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?w=800',
+  ],
+  'Professional Lighting': [
+    'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?w=800',
+    'https://images.pexels.com/photos/2952834/pexels-photo-2952834.jpeg?w=800',
+    'https://images.pexels.com/photos/2102568/pexels-photo-2102568.jpeg?w=800',
+    'https://images.pexels.com/photos/1763067/pexels-photo-1763067.jpeg?w=800',
+  ],
+  'Dhol Services': [
+    '/services/dhol/dhol1.avif',
+    '/services/dhol/dhol2.avif',
+    '/services/dhol/dhol1.avif',
+    '/services/dhol/dhol2.avif',
+  ],
+  'Special Effects': [
+    'https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?w=800',
+    'https://images.pexels.com/photos/169190/pexels-photo-169190.jpeg?w=800',
+    'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?w=800',
+    'https://images.pexels.com/photos/1449791/pexels-photo-1449791.jpeg?w=800',
+  ],
+};
 
 export default function Home() {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openServiceGallery = (serviceName: string) => {
+    setSelectedService(serviceName);
+    setCurrentImageIndex(0);
+  };
+
+  const closeServiceGallery = () => {
+    setSelectedService(null);
+    setCurrentImageIndex(0);
+  };
+
+  const goToPrevious = () => {
+    if (selectedService) {
+      const images = serviceImages[selectedService as keyof typeof serviceImages];
+      setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    }
+  };
+
+  const goToNext = () => {
+    if (selectedService) {
+      const images = serviceImages[selectedService as keyof typeof serviceImages];
+      setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }
+  };
   return (
     <div className="min-h-screen bg-black text-white" style={{ backgroundImage: "url('/gallery/gallery3.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {/* Hero Section */}
@@ -67,7 +122,8 @@ export default function Home() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors border border-neon-pink border-opacity-20"
+                onClick={() => openServiceGallery(service.title)}
+                className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors border border-neon-pink border-opacity-20 cursor-pointer"
               >
                 <h3 className="text-xl font-semibold text-neon-blue mb-2">{service.title}</h3>
                 <p className="text-gray-300">{service.desc}</p>
@@ -76,6 +132,51 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Service Gallery Modal */}
+      {selectedService && (
+        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
+          <button
+            onClick={closeServiceGallery}
+            className="absolute top-4 right-4 text-white hover:text-neon-pink transition-colors z-10"
+            aria-label="Close"
+          >
+            <X size={32} />
+          </button>
+
+          <button
+            onClick={goToPrevious}
+            className="absolute left-4 text-white hover:text-neon-pink transition-colors z-10"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={48} />
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-4 text-white hover:text-neon-pink transition-colors z-10"
+            aria-label="Next image"
+          >
+            <ChevronRight size={48} />
+          </button>
+
+          <div className="relative max-w-6xl max-h-[90vh] w-full h-full flex flex-col items-center justify-center">
+            <h2 className="text-3xl font-bold text-neon-yellow mb-6">{selectedService}</h2>
+            <div className="relative w-full h-full flex items-center justify-center">
+              <Image
+                src={serviceImages[selectedService as keyof typeof serviceImages][currentImageIndex]}
+                alt={`${selectedService} ${currentImageIndex + 1}`}
+                width={1200}
+                height={900}
+                className="max-w-full max-h-full object-contain rounded-lg"
+              />
+            </div>
+            <div className="mt-4 text-gray-300">
+              {currentImageIndex + 1} / {serviceImages[selectedService as keyof typeof serviceImages].length}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
