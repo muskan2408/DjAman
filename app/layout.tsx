@@ -17,7 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "DJ Aman - Professional DJ Setups & Event Entertainment",
   description: "Make your event unforgettable with DJ Aman. Professional DJ setups, lighting, and special effects for weddings, parties, and corporate events.",
-};;
+  icons: {
+    icon: '/logo.jpeg',
+  },
+};
 
 export default function RootLayout({
   children,
